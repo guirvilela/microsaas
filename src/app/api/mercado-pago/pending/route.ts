@@ -6,9 +6,9 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const paymentId = searchParams.get("payment_id");
 
-  const testId = searchParams.get("external_reference");
+  const testeId = searchParams.get("external_reference");
 
-  if (!paymentId || !testId) {
+  if (!paymentId || !testeId) {
     return NextResponse.json(
       { error: "Erro no pagamento ID ou Test Id" },
       { status: 401 }

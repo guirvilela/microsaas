@@ -3,15 +3,15 @@ import { Preference } from "mercadopago";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { testId, userEmail } = await req.json();
+  const { testeId, userEmail } = await req.json();
 
   try {
     const preference = new Preference(mpClient);
 
     const createdPreference = await preference.create({
       body: {
-        external_reference: testId,
-        metadata: { testId },
+        external_reference: testeId,
+        metadata: { testeId },
         ...(userEmail && { payer: { email: userEmail } }),
         items: [
           {
@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
       initPoint: createdPreference.init_point,
     });
   } catch (error) {
-    NextResponse.json(
+    return NextResponse.json(
       { error: "Erro ao criar checkout Mercado Pago" },
       { status: 500 }
     );
