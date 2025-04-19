@@ -1,6 +1,12 @@
 import { handleAuth } from "@/app/actions/handle-auth";
 import { auth } from "@/app/lib/auth";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Microsaas Login",
+  description: "Login",
+};
 
 export default async function Login() {
   const session = await auth();
