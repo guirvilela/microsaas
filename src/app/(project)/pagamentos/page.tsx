@@ -1,5 +1,6 @@
 "use client";
 
+import { useMercadoPago } from "@/app/hooks/useMercadoPago";
 import { useStripe } from "@/app/hooks/useStripe";
 
 export default function Pagamentos() {
@@ -8,6 +9,8 @@ export default function Pagamentos() {
     createSubscriptionStripeCheckout,
     handleCreateStripePortal,
   } = useStripe();
+
+  const { createMercadoPagoCheckout } = useMercadoPago();
 
   return (
     <div className="flex flex-col gap-10 items-center justify-center h-screen">
@@ -31,6 +34,18 @@ export default function Pagamentos() {
           onClick={() => handleCreateStripePortal()}
         >
           Portal de pagamento
+        </button>
+
+        <button
+          className="border rounded-md px-1 cursor-pointer"
+          onClick={() =>
+            createMercadoPagoCheckout({
+              testeId: "123",
+              userEmail: "teste@gmail.com",
+            })
+          }
+        >
+          Criar pagamento Mercado pago
         </button>
       </div>
     </div>

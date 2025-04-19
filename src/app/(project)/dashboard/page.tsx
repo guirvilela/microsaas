@@ -11,7 +11,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen gap-4">
       <h1>Dashboard</h1>
 
       {session?.user?.email && (
